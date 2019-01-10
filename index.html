@@ -7,26 +7,29 @@
         <!-- Link to CSS -->
         <!-- <link href="assets/css/reset.css" rel="stylesheet" type="text/css"/> -->
         <link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
+
+        <!-- Custom Fonts -->
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Comfortaa|Fascinate|Righteous');
+        </style>
     </head>
 
     <body>
-        <!-- Page header -->
-        <header>
+        <!-- Header -->
+        <header class="page-header">
             <h1 class="header">Comfy Coffee Trivia</h1>
             <p class="header">You have one minute to answer each question. Click "play" to begin.</p>
         </header>
-
-        <!-- Timer -->
-        <aside id="timer">
-            <h2 class="timer">Timer</h2>
-            <p class="timer">00:25 s</p>
-        </aside>
-
-        <!-- Trivia content -->
+        
+        <!-- Trivia Content -->
         <section id="trivia">
+            
+            <!-- Trivia Question -->
             <header class="trivia-question">
-            <h2>Question goes here</h2>
+                <h2>Question goes here</h2>
             </header>
+            
+            <!-- Trivia Choices -->
             <div class="trivia-choices">
                 <ul>
                     <li>Answer a</li>
@@ -37,6 +40,12 @@
             </div>
         </section>
 
+        <!-- Timer -->
+        <aside id="timer">
+            <h2 class="timer">Timer</h2>
+            <p class="timer">00:25 s</p>
+        </aside>
+        
         <!-- Footer -->
         <footer id="footer">Julie Ragsdale | © 2019</footer>
     </body>
