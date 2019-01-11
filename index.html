@@ -20,7 +20,12 @@
             <h1 class="header">Comfy Coffee Trivia</h1>
             <p class="header">You have one minute to answer each question. Click "play" to begin.</p>
         </header>
-        
+
+        <!-- Start Screen -->
+        <div class="startScreen" style="visibility:hidden">
+            <button id='playButton'>Play</button>
+        </div>
+
         <!-- Trivia Content -->
         <section id="trivia">
             
@@ -30,13 +35,11 @@
             </header>
             
             <!-- Trivia Choices -->
-            <div class="trivia-choices">
-                <ul>
-                    <li>Answer a</li>
-                    <li>Answer b</li>
-                    <li>Answer c</li>
-                    <li>Answer d</li>
-                </ul>
+            <div class="trivia-options">
+                <div class="options" class="option0">Answer a</div>
+                <div class="options" class="option1">Answer b</div>
+                <div class="options" class="option2">Answer c</div>
+                <div class="options" class="option3">Answer d</div>
             </div>
         </section>
 
@@ -46,6 +49,11 @@
             <p class="timer">00:25 s</p>
         </aside>
         
+        <!-- End Screen -->
+        <div class="endScreen" style="visibility:hidden">
+            <button id='playButton'>Play Again</button>
+        </div>
+
         <!-- Footer -->
         <footer id="footer">Julie Ragsdale | © 2019</footer>
     </body>
