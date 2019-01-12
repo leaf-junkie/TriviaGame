@@ -22,8 +22,8 @@
         </header>
 
         <!-- Start Screen -->
-        <div class="startScreen" style="visibility:hidden">
-            <button id='playButton'>Play</button>
+        <div class="start-screen" style="visibility: visible">
+            <button id='playButton' class="option-button">Play</button>
         </div>
 
         <!-- Trivia Content -->
@@ -31,27 +31,27 @@
             
             <!-- Trivia Question -->
             <header class="trivia-question">
-                <h2>Question goes here</h2>
+                <h2>Question</h2>
             </header>
             
             <!-- Trivia Choices -->
             <div class="trivia-options">
-                <div class="options" class="option0">Answer a</div>
-                <div class="options" class="option1">Answer b</div>
-                <div class="options" class="option2">Answer c</div>
-                <div class="options" class="option3">Answer d</div>
+                <div class="options" class="option0"><button class="option-button">Option0</button></div>
+                <div class="options" class="option1"><button class="option-button">Option1</button></div>
+                <div class="options" class="option2"><button class="option-button">Option2</button></div>
+                <div class="options" class="option3"><button class="option-button">Option3</button></div>
             </div>
         </section>
 
         <!-- Timer -->
         <aside id="timer">
             <h2 class="timer">Timer</h2>
-            <p class="timer">00:25 s</p>
+            <p class="timer" class="countdown">30 s</p>
         </aside>
         
         <!-- End Screen -->
-        <div class="endScreen" style="visibility:hidden">
-            <button id='playButton'>Play Again</button>
+        <div class="end-screen" style="visibility:hidden">
+            <button id="playButton" class="option-button">Play Again</button>
         </div>
 
         <!-- Footer -->

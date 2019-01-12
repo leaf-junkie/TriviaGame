@@ -4,7 +4,7 @@ let triviaObjects = [
     question1 = {
         question: 'Which country is the greatest producer of coffee?',
         answer: 'Brazil',
-        options: ['Brazil', 'Indonesia', 'Costa Rica','The U.S.']
+        options: ['Brazil', 'Indonesia', 'Costa Rica', 'The U.S.']
     },
     
     question2 = {
@@ -80,30 +80,57 @@ let triviaObjects = [
     }
 ];
 
-// Declare your variables
+// VARIABLE DECLARATIONS
+// Number of correct and incorrect guesses
 let numOfRightGuesses = 0;
 let numOfWrongGuesses = 0;
-let = 0;
-let userAnswers = [];
 
-// Display a START screen with a button to begin
+// Keep track of the number of time the timer reached 0
+let numOfTimesRunOut = 0;
 
-// Upon start, display timer, question, and potential answers
+// keep track of question that the game is on
+let currentQuestion = '',
+
+// TODO: Display a START screen with a button to begin
+
+// TODO: Upon start, display timer, question, and potential answers
 $('#playButton').click(countdownTimer);
 
 
 // TIMER
-    // Make the countdown timer (30 seconds to answer each questions)
-    countdownTimer = setTimeout(countdown, 30000);
+// Make the countdown timer (30 seconds to answer each questions)
+countdownTimer = setTimeout(countdown, 30000);
 
-    // Display the timer in the DOM
-    $('p.timer').click(countdownTimer);
+// Display the timer in the DOM
+$('p.timer').click(countdownTimer);
 
-    // Reset the timer when it reaches zero OR when an answer has been selected
-    clearTimeout(countdownTimer)
+// Reset the timer when it reaches zero OR when an answer has been selected
+clearTimeout(countdownTimer);
+
 
 // QUESTION AND ANSWERS
-    // Make questions clickable
-    // On click, move to next question
+// On click, move to next question TODO: Does the function 'nextQuestion' need to be in quotes?
+$('.optionButton').click(nextQuestion)
 
-// Display GAME OVER screen after final question. Provide option to play again
+
+// TODO: If the player selects the correct answer, show a screen congratulating them for choosing the right option. 
+    
+    // TODO: After a few seconds, display the next question (without user input)
+
+// If the player runs out of time, tell the player that time is up and display the correct answer
+if (countdownTimer === 0) {
+    
+    // TODO: Wait a few seconds, then show the next question.
+}
+
+// TODO: If the player chooses the wrong answer, tell the player they selected the wrong option and then display the correct answer.
+
+    // TODO: Wait a few seconds, then show the next question.
+
+// TODO: On the final screen, show the number of correct answers, incorrect answers, and an option to restart the game (without reloading the page).
+
+function nextQuestion() {
+    if () {
+
+    }
+}

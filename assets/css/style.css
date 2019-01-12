@@ -28,6 +28,12 @@ p.header {
     font-size: 24px;
 }
 
+.start-screen,
+.end-screen {
+    background-color: #1b1209;
+    color: lavender;
+}
+
 #trivia {
     background-color: linen;
     position: absolute;
@@ -49,18 +55,32 @@ p.header {
     box-shadow: 0 2px 4px;
 }
 
-.trivia-choices {
-    text-align: left;
-    padding: 50px;
-    line-height: 500%;
+.trivia-options {
+    text-align: center;
+    padding: 15px 50px;
+    line-height: 300%;
     margin-top: 100px;
     border-radius: 25px;
 }
 
-ul {
-    /* list-style-image: url(https://image.flaticon.com/icons/svg/812/812399.svg); */
-    list-style-type: circle;
-    font-size: 28px;
+.option-button {
+    background-color: linen;
+    color: #52361b;
+    font-family: 'Comfortaa', cursive;
+    font-size: 24px;
+    border-radius: 25px;
+    box-shadow: 0 2px 4px;
+    border: none;
+    width: 100%;
+    margin-bottom: 5rem;
+    padding: 10px;
+}
+
+.option-button:hover {
+    background-color: #52361b;
+    color: linen;
+    border: 1px solid rgb(255, 250, 246);
+    box-shadow: 0 2px 4px #1b1209;
 }
 
 #timer {
@@ -75,6 +95,11 @@ ul {
     border-radius: 25px;
     box-shadow: 0 2px 4px;
 }
+
+/* 
+.countdown {
+    margin-bottom: 75px;
+} */
 
 #footer {
     background-color: linen;
