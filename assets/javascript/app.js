@@ -93,7 +93,8 @@ let currentQuestion = '',
 
 // TODO: Display a START screen with a button to begin
 
-// TODO: Upon start, display timer, question, and potential answers
+
+// TODO: When Play button is clicked, game starts: display timer, current question, and potential answers
 $('#playButton').click(countdownTimer);
 
 
