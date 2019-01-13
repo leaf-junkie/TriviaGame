@@ -1,4 +1,4 @@
-$('document').ready() {
+$('document').ready(function() {
 
     // Trivia objects
 
@@ -141,4 +141,6 @@ $('document').ready() {
 
     //     }
     // }
-}
+
+    
+}); //end ready

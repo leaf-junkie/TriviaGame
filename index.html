@@ -24,9 +24,9 @@
 
         <!-- Start Screen -->
         <div class="start-screen" style="visibility: visible">
-            <div class="screen-position">
+            <div class="intro-div">
                 <h1 class="start-text">Comfy Coffee Trivia</h1>
-                <h2 class="start-text">A timed trivia game on the world's greatest drink!</h2>
+                <h2 class="start-text">A timed trivia game on the world's most beloved drink!</h2>
                 <h2 class="start-text">You have one minute to answer each question. Click "play" to begin.</h2>
                 <br>
                 <!-- TODO: Center button on screen -->
@@ -56,31 +56,34 @@
             <h2 class="timer">Timer</h2>
             <p class="timer" class="countdown">30 s</p>
         </aside>
+
+        <div id="timeIsUp" style='visibility: hidden'>
+            <p>Your time is up!</p>
+        </div>
         
         <!-- End Screen -->
-        <div class="end-screen" style="visibility:hidden">
-                <div class="screen-position">
-                        <h1 class="end-text">Comfy Coffee Trivia</h1>
-                        <div>
-                            <h2 class="end-text">Score</h2>
-                            <p>Correct: </p>
-                            <p>Incorrect: </p>
-                            <p>Ran out of time: </p>
-                        </div>
-                        <h2 class="end-text">Would you like to play again?</h2>
-                        <br>
-                        <!-- TODO: Center button on screen -->
-                        <button id="playButton" class="option-button">Play Again?</button>
-                    </div>
+        <div class="end-screen" style="visibility: hidden">
+            <div class="screen-position">
+                <h1 class="end-text">Comfy Coffee Trivia</h1>
+                <div>
+                    <h2 class="end-text">Score</h2>
+                    <p>Correct: </p>
+                    <p>Incorrect: </p>
+                    <p>Ran out of time: </p>
                 </div>
+                <h2 class="end-text">Would you like to play again?</h2>
+                <br>
+                <button id="playButton" class="option-button">Play Again?</button>
+            </div>
+        </div>
 
         <!-- Footer -->
         <footer id="footer">Julie Ragsdale | © 2019</footer>
     </body>
 
-    <!-- Link to jQuery -->
-    <script src="jquery-3.3.1.min.js"></script>
-
     <!-- Link to JavaScript -->
     <script src="/assets/javascript/app.js"></script>
+
+    <!-- Link to jQuery -->
+    <script src="jquery-3.3.1.min.js"></script>
 </html>
