@@ -105,15 +105,18 @@ $('document').ready(function() {
     }
 
     // TIMER
-    // Make the countdown timer (30 seconds to answer each questions)
     countdownTimer = setTimeout(countdown, 30000);
 
     // Display the timer in the DOM
     $('p.timer').click(countdownTimer);
 
-    // Reset the timer when it reaches zero OR when an answer has been selected
-    clearTimeout(countdownTimer);
+    // Reset the timer when an answer has been selected
 
+    // Reset the timer when it reaches zero
+    if (countdown >= 3000) {
+        clearTimeout(countdownTimer);
+        $('.countdown').clearTimeout(countdownTimer);
+    }
 
     // QUESTION AND ANSWERS
     // On click, move to next question TODO: Does the function 'nextQuestion' need to be in quotes?
