@@ -15,15 +15,23 @@
     </head>
 
     <body>
+
         <!-- Header -->
         <header class="page-header">
             <h1 class="header">Comfy Coffee Trivia</h1>
-            <p class="header">You have one minute to answer each question. Click "play" to begin.</p>
+            <p class="header">You have one minute to answer each question</p>
         </header>
 
         <!-- Start Screen -->
         <div class="start-screen" style="visibility: visible">
-            <button id='playButton' class="option-button">Play</button>
+            <div class="screen-position">
+                <h1 class="start-text">Comfy Coffee Trivia</h1>
+                <h2 class="start-text">A timed trivia game on the world's greatest drink!</h2>
+                <h2 class="start-text">You have one minute to answer each question. Click "play" to begin.</h2>
+                <br>
+                <!-- TODO: Center button on screen -->
+                <button id="playButton" class="option-button">Play</button>
+            </div>
         </div>
 
         <!-- Trivia Content -->
@@ -51,8 +59,20 @@
         
         <!-- End Screen -->
         <div class="end-screen" style="visibility:hidden">
-            <button id="playButton" class="option-button">Play Again</button>
-        </div>
+                <div class="screen-position">
+                        <h1 class="end-text">Comfy Coffee Trivia</h1>
+                        <div>
+                            <h2 class="end-text">Score</h2>
+                            <p>Correct: </p>
+                            <p>Incorrect: </p>
+                            <p>Ran out of time: </p>
+                        </div>
+                        <h2 class="end-text">Would you like to play again?</h2>
+                        <br>
+                        <!-- TODO: Center button on screen -->
+                        <button id="playButton" class="option-button">Play Again?</button>
+                    </div>
+                </div>
 
         <!-- Footer -->
         <footer id="footer">Julie Ragsdale | © 2019</footer>
@@ -62,5 +82,5 @@
     <script src="jquery-3.3.1.min.js"></script>
 
     <!-- Link to JavaScript -->
-    <script src="..assets/javascript/app.js"></script>
+    <script src="/assets/javascript/app.js"></script>
 </html>
