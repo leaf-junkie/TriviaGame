@@ -8,8 +8,7 @@ body {
     line-height: 250%;
 }
 
-/* TODO: Make start and end screens function */
-.start-screen {
+.intro-screen {
     width: 100%;
     height: 100%;
     background-image: url(../images/beans.jpg); 
@@ -20,7 +19,36 @@ body {
     z-index: 1;
 }
 
-.end-screen {
+.intro {
+    width: 75%;
+    position: relative;
+    margin: 0 auto;
+    top: 300px;
+    background-color: #362120;
+}
+
+h1.intro-text,
+h2.intro-text {
+    color: linen;
+    font-size: 75px;
+    text-shadow: 2px 2px 4px #1b1209;
+    text-align: center;
+    position: relative;
+    padding: 0 30px;
+    line-height: 150%;
+
+}
+
+h1.intro-text {
+    padding-top: 60px;
+}
+
+h2.intro-text {
+    font-size: 36px;
+}
+
+/* TODO: Make end screen function */
+.game-over-screen {
     width: 100%;
     height: 100%;
     background-image: url(../images/beans.jpg); 
@@ -32,32 +60,8 @@ body {
     visibility: hidden;
 }
 
-.intro-div {
-    width: 75%;
-    position: relative;
-    margin: 0 auto;
-    top: 300px;
-    background-color: #362120;
-}
+.game-over-text {
 
-h1.start-text,
-h2.start-text {
-    color: linen;
-    font-size: 75px;
-    text-shadow: 2px 2px 4px #1b1209;
-    text-align: center;
-    position: relative;
-    padding: 0 30px;
-    line-height: 150%;
-
-}
-
-h1.start-text {
-    padding-top: 60px;
-}
-
-h2.start-text {
-    font-size: 36px;
 }
 
 #playButton {
@@ -65,7 +69,9 @@ h2.start-text {
     width: 200px;
     font-size: 36px;
     position: relative;
-    left: 18.5rem; /* this can be improved */
+    border-radius: 25px;
+    box-shadow: 0 2px 4px;
+    border: none;
 }
 
 .page-header {
@@ -130,10 +136,12 @@ p.header {
     padding: 10px;
 }
 
+#playButton:focus,
 .option-button:focus {
     outline: none;
 }
 
+#playButton:hover,
 .option-button:hover {
     background-color: #DB935B;
     color: linen;
@@ -141,6 +149,7 @@ p.header {
     box-shadow: 0 2px 4px #1b1209;
 }
 
+#playButton:active,
 .option-button:active {
     background-color: #AA6C3C;
     color: linen;

@@ -111,14 +111,8 @@ $('document').ready(function() {
             nextQuestion();
         }            
         
-        // If the player runs out of time, tell the player that time is up and display the correct answer
-        // if (tickTock === 0) {
-        //     $('outOfTime').css({visibility: 'visible'});
-        //     numOfTimesRunOut === numOfTimesRunOut + 1;
-        //     const delay = setTimeout(delayQuestion, 2000);
-        //     // delayQuestion();
-        //     // resetTimer();    
-        // }
+        // If out of time, tell player that time is up and display correct answer
+
     });
         
     // Load question
@@ -131,7 +125,7 @@ $('document').ready(function() {
             startTimer();
             
             // Hide start screen
-            $('.start-screen').css({visibility: 'hidden'});
+            $('.intro-screen').css({visibility: 'hidden'});
             // Display question and choices
             $('#question').text(triviaObjects[questionIndex].question);
             $('#option0').text(triviaObjects[questionIndex].options[0]);
@@ -149,8 +143,9 @@ $('document').ready(function() {
         }
         timeRemaining = questionTime; 
         $('#countdown').text(timeRemaining + ' s');
+        // After 1 s, this decrements the time remaining
         lastTimer = setInterval(function() { 
-            timeRemaining--; //after 1 s, this decrements the time remaining
+            timeRemaining--;
             $('#countdown').text(timeRemaining + ' s');
             if (timeRemaining === 0) {
                 numOfWrongGuesses++;
@@ -164,21 +159,21 @@ $('document').ready(function() {
     // If game is over, show scores and option to restart game (without reloading page)
     function gameOver() {
         //  Show scores
-        $('.end-screen').css({visibility: 'visible'});
-        $('.end-screen-right').text('Right: ' + numOfRightGuesses);
-        $('.end-screen-wrong').text('Wrong: ' + numOfWrongGuesses);
-        $('.end-screen-timeout').text('Ran out of time: ' + numOfTimesRunOut);   
+        $('.game-over-screen').css({visibility: 'visible'});
+        $('.game-over-screen-right').text('Right: ' + numOfRightGuesses);
+        $('.game-over-screen-wrong').text('Wrong: ' + numOfWrongGuesses);
+        $('.game-over-screen-timeout').text('Ran out of time: ' + numOfTimesRunOut);   
         console.log('Youve answered all of the questions. Lets see how you did!');
     }
 
     // If player clicks "play again" button, reset values
-    // function resetGame() {
-    //     $('#playButton').click(function(event) {
-    //         let arrayOfAskedQuestions = [''];
-    //         let questionIndex = 0;
-    //         let numOfRightGuesses = 0;
-    //         let numOfWrongGuesses = 0;
-    //         let numOfTimesRunOut = 0;
-    //     });
-    // }
+    function resetGame() {
+        $('#playButton').click(function() {
+            let arrayOfAskedQuestions = [''];
+            let questionIndex = 0;
+            let numOfRightGuesses = 0;
+            let numOfWrongGuesses = 0;
+            let numOfTimesRunOut = 0;
+        });
+    }
 }); // End ready
