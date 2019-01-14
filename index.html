@@ -51,15 +51,16 @@
             </div>
 
             <!-- Display image and message after each question right -->
-            <div id="right">
-                <p id="goodJob"></p>
-                <img id="objPicture"/>
+            <div id="rightAnswer">
+                <p id="goodJob">Good job!</p>
+                <img id="objImage"/>
             </div>
 
             <!-- Display image and message after each question wrong -->
-            <div id="wrong">
-                <p id="Incorrect"></p>
-                <img id="objPicture"/>
+            <div id="wrongAnswer">
+                <p id="incorrect">Wrong!</p>
+                <img id="objImage"/>
+                <p id="showCorrect">The correct answer is: </p>
             </div>
         </section>
 
@@ -74,15 +75,15 @@
         </div>
         
         <!-- End Screen -->
-        <div class="game-over-screen-position">
-            <div class="game-over-screen">
+        <div id="gameOverPosition">
+            <div id="gameOverScreen">
                 <h1 class="game-over-text">Comfy Coffee Trivia</h1>
                 <h2 class="game-over-text">Congratulations, you finished the game! Let's see how you did.</h2>
                 <div>
                     <h2 class="game-over-text">Score</h2>
-                    <p id="correct">Correct: </p>
-                    <p id="incorrect">Incorrect: </p>
-                    <p id="timeRanOut">Ran out of time: </p>
+                    <p id="right"></p>
+                    <p id="wrong"></p>
+                    <p id="timeRanOut"></p>
                 </div>
                 <br>
                 <button id="playButton">Play Again?</button>

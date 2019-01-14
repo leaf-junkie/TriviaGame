@@ -48,7 +48,7 @@ h2.intro-text {
 }
 
 /* TODO: Make end screen function */
-.game-over-screen {
+#gameOverPosition {
     width: 100%;
     height: 100%;
     background-image: url(../images/beans.jpg); 
@@ -56,12 +56,37 @@ h2.intro-text {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1;
     visibility: hidden;
 }
 
-.game-over-text {
+#gameOverScreen {
+    width: 65%;
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+    top: 200px;
+    background-color: #362120;
+    color: linen;
+    visibility: hidden;
+    z-index: 1;
+}
 
+.game-over-text,
+p {
+    text-align: center;
+    line-height: 150%;
+}
+
+h1.game-over-text {
+    font-size: 62px;
+}
+
+h2.game-over-text {
+    font-size: 36px;
+}
+
+p {
+    font-size: 24px;
 }
 
 #playButton {
@@ -136,6 +161,12 @@ p.header {
     padding: 10px;
 }
 
+#rightAnswer,
+#wrongAnswer {
+    background-color: #1b1209;
+    visibility: hidden;
+}
+
 #playButton:focus,
 .option-button:focus {
     outline: none;
@@ -169,11 +200,6 @@ p.header {
     border-radius: 25px;
     box-shadow: 0 2px 4px;
 }
-
-/* 
-.countdown {
-    margin-bottom: 75px;
-} */
 
 #footer {
     background-color: linen;
