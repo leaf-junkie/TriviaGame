@@ -81,109 +81,104 @@ $('document').ready(function() {
         },
     ];
 
-    let arrayOfAskedQuestions = [''];
-
     let questionIndex = 0;
     
     let numOfRightGuesses = 0;
     let numOfWrongGuesses = 0;
     let numOfTimesRunOut = 0;
 
+    const questionTime = 5;
+
     // G A M E P L A Y
-    // When Play button is clicked, game starts: display timer, current question, and potential answers
-    $('#playButton').on('click', play);
+    // When Play button is clicked, game loads
+    $('#playButton').on('click', nextQuestion);
 
-    $('.option-button').click(function(event) {
-        console.log($(this).text()); // compare text to answer; questionIndex
+    $('.option-button').click(function() {
+        let userChoice = $(this).text();
+        let correctAnswer = triviaObjects[questionIndex].answer;
 
-        // TODO: On click, move to next question
-        function loadQuestion() {
-            // If the use chooses an answer, move to the next question
-            // questionIndex.options === triviaObjects.answer
-            if () {
-
-            } else {
-                // If time runs out, move to the next question
-        
-                }
-            
-            $('.optionButton').on('click', triviaObjects.question[i](options[i]));
-        }
-
-        // Interpret user input
-        if (userChoice === triviaObjects.answer) {
-            numOfRightGuesses === numOfRightGuesses + 1;
+        // Check if answer is correct
+        if (userChoice === correctAnswer) {
+            numOfRightGuesses++;
             $('right').css({visibility: 'visible'}); //TODO: create div where this will be shown
-            delayQuestion();
-            resetTimer();
-            loadQuestion();          
+            questionIndex++;
+            nextQuestion();
         } else {
-            numOfWrongGuesses === numOfWrongGuesses + 1;
+            numOfWrongGuesses++;
             $('wrong').css({visibility: 'visible'}); //TODO: create div where this will be shown
             $('showCorrect').text(correctAnswer);
-            delayQuestion();
-            resetTimer();
-            loadQuestion();
+            questionIndex++;
+            nextQuestion();
         }            
         
         // If the player runs out of time, tell the player that time is up and display the correct answer
-        if (tickTock === 0) {
-            $('outOfTime').css({visibility: 'visible'});
-            numOfTimesRunOut === numOfTimesRunOut + 1;
-            const delay = setTimeout(delayQuestion, 2000);
-            delayQuestion();
-            resetTimer();
-            loadQuestion();
-    }
+        // if (tickTock === 0) {
+        //     $('outOfTime').css({visibility: 'visible'});
+        //     numOfTimesRunOut === numOfTimesRunOut + 1;
+        //     const delay = setTimeout(delayQuestion, 2000);
+        //     // delayQuestion();
+        //     // resetTimer();    
+        // }
     });
         
-    // play function
-    function play() {
-        // Hide start screen
-        $('.start-screen').css({visibility: 'hidden'});
-        // Reset countdown timer,
-        // setTimeout(countdown, 15000);
-        // Display question and choices
-        $('#question').text(triviaObjects[questionIndex].question);
-        $('#option0').text(triviaObjects[questionIndex].options[0]);
-        $('#option1').text(triviaObjects[questionIndex].options[1]);
-        $('#option2').text(triviaObjects[questionIndex].options[2]);
-        $('#option3').text(triviaObjects[questionIndex].options[3]);
-        // Display question and answers
-    }
-
-    // T I M E R
-    function countdown() {
-    
-    }
-
-    function resetTimer() {
-        $('.countdown').clearTimeout(tickTock);
-    }
-    
-    let tickTock = setTimeout(countdown, 15000);
-
-
-    // Display the timer in the DOM
-    $('p.timer').on('click', tickTock);
-
-    // Reset the timer when it reaches zero
-    if (countdown >= 15000) {
-        clearTimeout(tickTock);
-        $('.countdown').clearTimeout(tickTock);
-    }    
-
-    // TODO: On the final screen, show the number of correct answers, incorrect answers, and an option to restart the game (without reloading the page).
-    function showScores() {
-        let questionTracker = arrayOfAskedQuestions.length;
-
-        if (questionTracker >= arrayOfQuestions.length) {
-            $('.countdown').clearTimeout(tickTock); // reset timer
-            $('.end-screen').css({visibility: 'visible'});
-            $('.end-screen-right').text('Right: ' + numOfRightGuesses);
-            $('.end-screen-wrong').text('Wrong: ' + numOfWrongGuesses);
-            $('.end-screen-timeout').text('Ran out of time: ' + numOfTimesRunOut);
+    // Load question
+    function nextQuestion() {
+        if (questionIndex >= triviaObjects.length) {
+            gameOver();
+        } else {
+            console.log(`Moving to question ${questionIndex}`);
+            // Reset countdown timer,
+            startTimer();
+            
+            // Hide start screen
+            $('.start-screen').css({visibility: 'hidden'});
+            // Display question and choices
+            $('#question').text(triviaObjects[questionIndex].question);
+            $('#option0').text(triviaObjects[questionIndex].options[0]);
+            $('#option1').text(triviaObjects[questionIndex].options[1]);
+            $('#option2').text(triviaObjects[questionIndex].options[2]);
+            $('#option3').text(triviaObjects[questionIndex].options[3]);
         }
     }
-    
-}); //end ready
+
+    let timeRemaining;
+    let lastTimer;
+    function startTimer() {
+        if (lastTimer) {
+            clearInterval(lastTimer);
+        }
+        timeRemaining = questionTime; 
+        $('#countdown').text(timeRemaining + ' s');
+        lastTimer = setInterval(function() { 
+            timeRemaining--; //after 1 s, this decrements the time remaining
+            $('#countdown').text(timeRemaining + ' s');
+            if (timeRemaining === 0) {
+                numOfWrongGuesses++;
+                questionIndex++;
+                nextQuestion();
+            }
+        }, 1000);
+    }
+
+    // Each round, check if game is over
+    // If game is over, show scores and option to restart game (without reloading page)
+    function gameOver() {
+        //  Show scores
+        $('.end-screen').css({visibility: 'visible'});
+        $('.end-screen-right').text('Right: ' + numOfRightGuesses);
+        $('.end-screen-wrong').text('Wrong: ' + numOfWrongGuesses);
+        $('.end-screen-timeout').text('Ran out of time: ' + numOfTimesRunOut);   
+        console.log('Youve answered all of the questions. Lets see how you did!');
+    }
+
+    // If player clicks "play again" button, reset values
+    // function resetGame() {
+    //     $('#playButton').click(function(event) {
+    //         let arrayOfAskedQuestions = [''];
+    //         let questionIndex = 0;
+    //         let numOfRightGuesses = 0;
+    //         let numOfWrongGuesses = 0;
+    //         let numOfTimesRunOut = 0;
+    //     });
+    // }
+}); // End ready

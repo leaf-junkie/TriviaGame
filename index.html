@@ -30,7 +30,7 @@
                 <h2 class="start-text">You have one minute to answer each question. Click "play" to begin.</h2>
                 <br>
                 <!-- TODO: Center button on screen -->
-                <button id="playButton" class="option-button">Play</button>
+                <button id="playButton">Play</button>
             </div>
         </div>
 
@@ -54,7 +54,7 @@
         <!-- Timer -->
         <aside id="timer">
             <h2 class="timer">Timer</h2>
-            <p class="timer" class="countdown">30 s</p>
+            <p class="timer" id="countdown">30 s</p>
         </aside>
 
         <div id="timeIsUp" style='visibility: hidden'>
@@ -67,9 +67,9 @@
                 <h1 class="end-text">Comfy Coffee Trivia</h1>
                 <div>
                     <h2 class="end-text">Score</h2>
-                    <p>Correct: </p>
-                    <p>Incorrect: </p>
-                    <p>Ran out of time: </p>
+                    <p id="correct">Correct: </p>
+                    <p id="incorrect">Incorrect: </p>
+                    <p id="timeRanOut">Ran out of time: </p>
                 </div>
                 <h2 class="end-text">Would you like to play again?</h2>
                 <br>
