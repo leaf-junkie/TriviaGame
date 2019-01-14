@@ -1,4 +1,5 @@
 $('document').ready(function() {
+    
     // Trivia objects
     let triviaObjects = [ 
         {
@@ -81,6 +82,7 @@ $('document').ready(function() {
         },
     ];
 
+    // Variables
     let questionIndex = 0;
     
     let numOfRightGuesses = 0;
@@ -91,44 +93,49 @@ $('document').ready(function() {
     const delay = 4;
 
     // G A M E P L A Y
+
     // When Play button is clicked, game loads
     $('#playButton').on('click', nextQuestion);
 
+    // Click event handler
     $('.option-button').click(function() {
         let userChoice = $(this).text();
         let correctAnswer = triviaObjects[questionIndex].answer;
-
+        
         // Duplication can be prevented here in the future (aka refactoring!)
-        // Check if answer is correct
-        if (userChoice === correctAnswer) {
+
+        // If out of time...
+        if (questionTime <= 0) {
+            // Delay question here
+            const delayQuestion = setTimeout(function() {
+                nextQuestion();
+            }, delay * 1000);
+        
+        // If answer is correct...
+        } else if (userChoice === correctAnswer) {
+            // Display message and relevant image
             $('#rightAnswer').css({visibility: 'visible'});
             $('#objImage').attr('src', triviaObjects[questionIndex].image);
             numOfRightGuesses++;
             questionIndex++;
-            
             // Delay question here
             const delayQuestion = setTimeout(function() {
-                // Display relevant image and message
                 nextQuestion();
             }, delay * 1000);
+
+        // If answer is incorrect...
         } else {
-            // Display relevant image and message
+            // Display message and relevant image and reveal correct answer
             $('#wrongAnswer').css({visibility: 'visible'});
             $('#objImage').attr('src', triviaObjects[questionIndex].image);
-
-            // Display correct answer
             $('#showCorrect').text(correctAnswer);
             numOfWrongGuesses++;
             questionIndex++;
-            
             // Delay question here
             setTimeout(function(){
                 nextQuestion();
             }, delay * 1000);  
-        }            
-        
-        // If out of time, tell player that time is up and display correct answer
-
+        }
     });
         
     // Load question
@@ -151,6 +158,7 @@ $('document').ready(function() {
         }
     }
 
+    // Timer
     let timeRemaining;
     let lastTimer;
     function startTimer() {
@@ -171,8 +179,8 @@ $('document').ready(function() {
         }, 1000);
     }
 
-    // Each round, check if game is over
-    // If game is over, show scores and option to restart game (without reloading page)
+    // After each question, check if the game is over
+    // If the game is over...
     function gameOver() {
         //  Show scores
         $('#gameOverPosition').css({visibility: 'visible'});
@@ -182,10 +190,11 @@ $('document').ready(function() {
         $('#timeRanOut').text('Times you ran out of time: ' + numOfTimesRunOut);   
         console.log('Youve answered all of the questions. Lets see how you did!');
         
+        // Reset the game without reloading the page
         resetGame();
     }
 
-    // If player clicks "play again" button, reset values
+    // If the player clicks "play again" button, reset all values
     function resetGame() {
         $('#playButton').click(function() {
             let questionIndex = 0;
@@ -195,13 +204,19 @@ $('document').ready(function() {
         });
     }
 
+    // Check visibility of certain objects and set to either hidden or visible
     function changeVisibility() {
         if (visibility != hidden) {
         } else {
             (visibility = hidden);
         }
+        // All elements that change visibility include:
+        $('#rightAnswer').css({visibility: 'hidden'});
+        $('#wrongAnswer').css({visibility: 'hidden'});
+        $('.intro-screen').css({visibility: 'hidden'});
         $('#gameOverPosition').css({visibility: 'hidden'});
         $('#gameOverScreen').css({visibility: 'hidden'});
     }
-
-}); // End ready
+    
+// End ready
+});
