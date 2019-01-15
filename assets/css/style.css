@@ -95,6 +95,7 @@ p {
     width: 200px;
     font-size: 36px;
     position: relative;
+    margin: 0 auto;
     border-radius: 25px;
     box-shadow: 0 2px 4px;
     border: none;
