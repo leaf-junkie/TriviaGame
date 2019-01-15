@@ -89,7 +89,7 @@ $('document').ready(function() {
     let numOfWrongGuesses = 0;
     let numOfTimesRunOut = 0;
 
-    const questionTime = 15;
+    const questionTime = 3;
     const delay = 5;
 
     // G A M E P L A Y
@@ -176,23 +176,25 @@ $('document').ready(function() {
             if (timeRemaining <= 0) {
 
                 // Display message and relevant image and reveal correct answer
-                $('#timeIsUp').css({visibility: 'visible'});
                 $('.objImage').attr('src', triviaObjects[questionIndex].image);
-                $('#showCorrect').text(correctAnswer);
+                $('#timeIsUp').css({visibility: 'visible'});
+                $('#showCorrect').text(triviaObjects[questionIndex].answer);
                 numOfTimesRunOut++;
                 questionIndex++;
 
+                clearInterval(lastTimer);
                 // Delay question here
                 const delayQuestion = setTimeout(function() {
                     nextQuestion();
                     clearTimeout(delayQuestion);
+                    $('#timeIsUp').css({visibility: 'hidden'});
                 }, delay * 1000);
-
-            } else if (timeRemaining === 0) {
-                numOfWrongGuesses++;
-                questionIndex++;
-                nextQuestion();
-            }
+            } 
+            // else if (timeRemaining === 0) {
+            //     numOfWrongGuesses++;
+            //     questionIndex++;
+            //     nextQuestion();
+            // }
         }, 1000);
     }
 
@@ -213,31 +215,33 @@ $('document').ready(function() {
 
     // If the player clicks "play again" button, reset all values
     function resetGame() {
-            let questionIndex = 0;
-            let numOfRightGuesses = 0;
-            let numOfWrongGuesses = 0;
-            let numOfTimesRunOut = 0;
-            $('#playButton').on('click', nextQuestion);
+        let questionIndex = 0;
+        let numOfRightGuesses = 0;
+        let numOfWrongGuesses = 0;
+        let numOfTimesRunOut = 0;
+        const questionTime = 15;
+        const delay = 5;
+        $('#playAgain').on('click', nextQuestion);
     }
 
     // Check visibility of certain objects and set to either hidden or visible
-    function changeVisibility() {
-        if (visibility != hidden) {
-            // All elements that change visibility include:
-            $('#rightAnswer').css({visibility: 'hidden'});
-            $('#wrongAnswer').css({visibility: 'hidden'});
-            $('.intro-screen').css({visibility: 'hidden'});
-            $('#gameOverPosition').css({visibility: 'hidden'});
-            $('#gameOverScreen').css({visibility: 'hidden'});
-        } else {
-            // All elements that change visibility include:
-            $('#rightAnswer').css({visibility: 'visible'});
-            $('#wrongAnswer').css({visibility: 'visible'});
-            $('.intro-screen').css({visibility: 'visible'});
-            $('#gameOverPosition').css({visibility: 'visible'});
-            $('#gameOverScreen').css({visibility: 'visible'});
-        }
-    }
+    // function changeVisibility() {
+    //     if (visibility != hidden) {
+    //         // All elements that change visibility include:
+    //         $('#rightAnswer').css({visibility: 'hidden'});
+    //         $('#wrongAnswer').css({visibility: 'hidden'});
+    //         $('.intro-screen').css({visibility: 'hidden'});
+    //         $('#gameOverPosition').css({visibility: 'hidden'});
+    //         $('#gameOverScreen').css({visibility: 'hidden'});
+    //     } else {
+    //         // All elements that change visibility include:
+    //         $('#rightAnswer').css({visibility: 'visible'});
+    //         $('#wrongAnswer').css({visibility: 'visible'});
+    //         $('.intro-screen').css({visibility: 'visible'});
+    //         $('#gameOverPosition').css({visibility: 'visible'});
+    //         $('#gameOverScreen').css({visibility: 'visible'});
+    //     }
+    // }
 
 // End ready
 });
