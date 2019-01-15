@@ -115,28 +115,23 @@ p {
 }
 
 h1.header {
-    font-size: 50px;
+    font-size: 72px;
+    margin-top: 50px;
 }
 
 p.header {
-    font-size: 24px;
+    font-size: 30px;
 }
 
 section {
     background-color: linen;
     position: absolute;
     width: 60%;
-    height: 60%;
+    height: 35%;
     margin-top: 25%;
     left: 3%;
     border-radius: 25px;
     box-shadow: 0 2px 4px;
-}
-
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
 }
 
 #triviaQuestion {
@@ -146,6 +141,7 @@ section {
     position: relative;
     border-radius: 25px;
     box-shadow: 0 2px 4px;
+    padding: 5px 0px;
     margin-bottom: 50px;
 }
 
