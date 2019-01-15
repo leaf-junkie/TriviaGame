@@ -121,7 +121,7 @@ $('document').ready(function() {
             // Display message and relevant image and reveal correct answer
             $('#wrongAnswer').css({visibility: 'visible'});
             $('.objImage').attr('src', triviaObjects[questionIndex].image);
-            $('#showCorrect').text('The correct answer is: ' + correctAnswer);
+            $('.showCorrect').text('The correct answer is: ' + correctAnswer);
             numOfWrongGuesses++;
             questionIndex++;
             // Delay question here
@@ -178,7 +178,7 @@ $('document').ready(function() {
                 // Display message and relevant image and reveal correct answer
                 $('.objImage').attr('src', triviaObjects[questionIndex].image);
                 $('#timeIsUp').css({visibility: 'visible'});
-                $('#showCorrect').text('The correct answer is: ' + triviaObjects[questionIndex].answer);
+                $('.showCorrect').text('The correct answer is: ' + triviaObjects[questionIndex].answer);
                 numOfTimesRunOut++;
                 questionIndex++;
 
