@@ -89,8 +89,8 @@ $('document').ready(function() {
     let numOfWrongGuesses = 0;
     let numOfTimesRunOut = 0;
 
-    const questionTime = 5;
-    const delay = 3;
+    const questionTime = 15;
+    const delay = 5;
 
     // G A M E P L A Y
 
@@ -121,7 +121,7 @@ $('document').ready(function() {
             // Display message and relevant image and reveal correct answer
             $('#wrongAnswer').css({visibility: 'visible'});
             $('.objImage').attr('src', triviaObjects[questionIndex].image);
-            $('#showCorrect').text(correctAnswer);
+            $('#showCorrect').text('The correct answer is: ' + correctAnswer);
             numOfWrongGuesses++;
             questionIndex++;
             // Delay question here
@@ -178,7 +178,7 @@ $('document').ready(function() {
                 // Display message and relevant image and reveal correct answer
                 $('.objImage').attr('src', triviaObjects[questionIndex].image);
                 $('#timeIsUp').css({visibility: 'visible'});
-                $('#showCorrect').text(triviaObjects[questionIndex].answer);
+                $('#showCorrect').text('The correct answer is: ' + triviaObjects[questionIndex].answer);
                 numOfTimesRunOut++;
                 questionIndex++;
 
