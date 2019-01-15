@@ -35,13 +35,13 @@
         </div>
 
         <!-- Trivia Content -->
-        <section id="trivia">
+        <section id="mainDisplay">
             
             <!-- Trivia Question -->
             <header class="trivia-question">
                 <h2 id="question">Question</h2>
             </header>
-            
+
             <!-- Trivia Choices -->
             <div class="trivia-options">
                 <div class="options" ><button id="option0" value="0" class="option-button">Option0</button></div>
@@ -53,26 +53,30 @@
             <!-- Display image and message after each question right -->
             <div id="rightAnswer">
                 <p id="goodJob">Good job!</p>
-                <img id="objImage"/>
+                <img class="objImage"/>
             </div>
 
             <!-- Display image and message after each question wrong -->
             <div id="wrongAnswer">
                 <p id="incorrect">Nope!</p>
-                <img id="objImage"/>
+                <img class="objImage"/>
                 <p id="showCorrect">The correct answer is: </p>
             </div>
+
+            <!-- Display image and message after time runs out -->
+            <div id="timeIsUp">
+                <p id="outOfTime">Your time is up!</p>
+                <img class="objImage"/>
+                <p id="showCorrect">The correct answer is: </p>
+            </div>
+        </div>
         </section>
 
         <!-- Timer -->
         <aside id="timer">
             <h2 class="timer">Timer</h2>
-            <p class="timer" id="countdown">30 s</p>
+            <p class="timer" id="countdown">15 s</p>
         </aside>
-
-        <div id="timeIsUp" style='visibility: hidden'>
-            <p>Your time is up!</p>
-        </div>
         
         <!-- End Screen -->
         <div id="gameOverPosition">

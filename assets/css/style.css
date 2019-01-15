@@ -119,7 +119,7 @@ p.header {
     font-size: 24px;
 }
 
-#trivia {
+section {
     background-color: linen;
     position: absolute;
     width: 60%;
@@ -161,10 +161,23 @@ p.header {
     padding: 10px;
 }
 
+/* Style the major trivia div */
+#mainDisplay {
+
+}
+
+#timeIsUp,
 #rightAnswer,
 #wrongAnswer {
+    position: absolute;
     background-color: #1b1209;
     visibility: hidden;
+}
+
+.objImage {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
 }
 
 #playButton:focus,
@@ -204,7 +217,7 @@ p.header {
 #footer {
     background-color: linen;
     text-align: center;
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 50px;
     bottom: 0;

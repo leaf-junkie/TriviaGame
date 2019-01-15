@@ -90,7 +90,7 @@ $('document').ready(function() {
     let numOfTimesRunOut = 0;
 
     const questionTime = 15;
-    const delay = 4;
+    const delay = 5;
 
     // G A M E P L A Y
 
@@ -104,37 +104,30 @@ $('document').ready(function() {
         
         // Duplication can be prevented here in the future (aka refactoring!)
 
-        // If out of time...
-        if (questionTime <= 0) {
-            // Delay question here
-            const delayQuestion = setTimeout(function() {
-                nextQuestion();
-            }, delay * 1000);
-        
         // If answer is correct...
-        } else if (userChoice === correctAnswer) {
+        if (userChoice === correctAnswer) {
             // Display message and relevant image
             $('#rightAnswer').css({visibility: 'visible'});
-            $('#objImage').attr('src', triviaObjects[questionIndex].image);
+            $('.objImage').attr('src', triviaObjects[questionIndex].image);
             numOfRightGuesses++;
             questionIndex++;
             // Delay question here
             const delayQuestion = setTimeout(function() {
                 nextQuestion();
             }, delay * 1000);
-
-        // If answer is incorrect...
+            
+            // If answer is incorrect...
         } else {
             // Display message and relevant image and reveal correct answer
             $('#wrongAnswer').css({visibility: 'visible'});
-            $('#objImage').attr('src', triviaObjects[questionIndex].image);
+            $('.objImage').attr('src', triviaObjects[questionIndex].image);
             $('#showCorrect').text(correctAnswer);
             numOfWrongGuesses++;
             questionIndex++;
             // Delay question here
             setTimeout(function(){
                 nextQuestion();
-            }, delay * 1000);  
+            }, delay * 1000);
         }
     });
         
@@ -144,11 +137,17 @@ $('document').ready(function() {
             gameOver();
         } else {
             console.log(`Moving to question ${questionIndex}`);
+            
             // Reset countdown timer,
             startTimer();
             
             // Hide start screen
             $('.intro-screen').css({visibility: 'hidden'});
+            
+            // Hide right/wrong message and image
+            $('#rightAnswer').css({visibility: 'hidden'});
+            $('#wrongAnswer').css({visibility: 'hidden'});
+
             // Display question and choices
             $('#question').text(triviaObjects[questionIndex].question);
             $('#option0').text(triviaObjects[questionIndex].options[0]);
@@ -167,11 +166,29 @@ $('document').ready(function() {
         }
         timeRemaining = questionTime; 
         $('#countdown').text(timeRemaining + ' s');
+        
         // After 1 s, this decrements the time remaining
         lastTimer = setInterval(function() { 
             timeRemaining--;
             $('#countdown').text(timeRemaining + ' s');
-            if (timeRemaining === 0) {
+
+            // If out of time...
+            if (timeRemaining <= 0) {
+
+                // Display message and relevant image and reveal correct answer
+                $('#timeIsUp').css({visibility: 'visible'});
+                $('.objImage').attr('src', triviaObjects[questionIndex].image);
+                $('#showCorrect').text(correctAnswer);
+                numOfTimesRunOut++;
+                questionIndex++;
+
+                // Delay question here
+                const delayQuestion = setTimeout(function() {
+                    nextQuestion();
+                    clearTimeout(delayQuestion);
+                }, delay * 1000);
+
+            } else if (timeRemaining === 0) {
                 numOfWrongGuesses++;
                 questionIndex++;
                 nextQuestion();
@@ -196,27 +213,31 @@ $('document').ready(function() {
 
     // If the player clicks "play again" button, reset all values
     function resetGame() {
-        $('#playButton').click(function() {
             let questionIndex = 0;
             let numOfRightGuesses = 0;
             let numOfWrongGuesses = 0;
             let numOfTimesRunOut = 0;
-        });
+            $('#playButton').on('click', nextQuestion);
     }
 
     // Check visibility of certain objects and set to either hidden or visible
     function changeVisibility() {
         if (visibility != hidden) {
+            // All elements that change visibility include:
+            $('#rightAnswer').css({visibility: 'hidden'});
+            $('#wrongAnswer').css({visibility: 'hidden'});
+            $('.intro-screen').css({visibility: 'hidden'});
+            $('#gameOverPosition').css({visibility: 'hidden'});
+            $('#gameOverScreen').css({visibility: 'hidden'});
         } else {
-            (visibility = hidden);
+            // All elements that change visibility include:
+            $('#rightAnswer').css({visibility: 'visible'});
+            $('#wrongAnswer').css({visibility: 'visible'});
+            $('.intro-screen').css({visibility: 'visible'});
+            $('#gameOverPosition').css({visibility: 'visible'});
+            $('#gameOverScreen').css({visibility: 'visible'});
         }
-        // All elements that change visibility include:
-        $('#rightAnswer').css({visibility: 'hidden'});
-        $('#wrongAnswer').css({visibility: 'hidden'});
-        $('.intro-screen').css({visibility: 'hidden'});
-        $('#gameOverPosition').css({visibility: 'hidden'});
-        $('#gameOverScreen').css({visibility: 'hidden'});
     }
-    
+
 // End ready
 });
