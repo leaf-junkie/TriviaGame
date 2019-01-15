@@ -172,6 +172,7 @@ section {
 /* Style the major trivia div */
 #mainDisplay {
     position: absolute;
+    width: 60%;
     border-radius: 25px;
     box-shadow: 0 2px 4px;
 
@@ -181,6 +182,7 @@ section {
 #rightAnswer,
 #wrongAnswer {
     position: absolute;
+    width: 100%;
     top: 0;
     background-color: #1b1209;
     visibility: hidden;
